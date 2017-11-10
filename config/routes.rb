@@ -122,6 +122,7 @@ Peatio::Application.routes.draw do
   end
   post '/webhooks/tx' => 'webhooks#tx'
   post '/webhooks/eth' => 'webhooks#eth'
+  post '/webhooks/adk' => 'webhooks#adk'
 
   draw :admin
   post '/webhooks/tx' => 'webhooks#tx'

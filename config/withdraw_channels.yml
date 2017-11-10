@@ -1,4 +1,4 @@
-- id: 200
+- id: 300
   key: satoshi
   currency: btc
   fixed: 8
@@ -24,5 +24,12 @@
   inuse: true
   fixed: 8
   fee: 0.0005
-  type: WithdrawChannelEthereum
-  
+  type: WithdrawChannelEthereum  
+- id: 700
+  key: aidoscoin
+  currency: adk
+  inuse: true
+  fixed: 8
+  fee: 0.000
+  type: WithdrawChannelAidoscoin
+

@@ -2,8 +2,8 @@
   key: satoshi
   currency: btc
   sort_order: 1
-  min_confirm: 1
-  max_confirm: 3
+  min_confirm: 6
+  max_confirm: 6
 - id: 400
   key: bank
   currency: cny
@@ -19,3 +19,10 @@
   currency: eth
   min_confirm: 1
   max_confirm: 6
+- id: 800
+  key: aidoscoin
+  currency: adk
+  sort_order: 1
+  min_confirm: 1
+  max_confirm: 3
+
