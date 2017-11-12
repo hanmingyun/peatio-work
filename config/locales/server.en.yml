@@ -76,7 +76,7 @@ en:
         state: Status
         state_text: Status
         tx_id: TxID
-        fund_source_id: Withdraw address
+        fund_source: Withdraw address
         detail: Detail
       account_version:
         id: ID
@@ -188,6 +188,26 @@ en:
         amount: Amount
         remark: Remark
         fee: Fee
+      deposits/aidoscoin:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
+      withdraws/aidoscoin:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
     errors:
       models:
         order_bid:
@@ -235,6 +255,8 @@ en:
             address:
               satoshi_ismine: Used Address
               satoshi_invalid: Invalid Address
+              aidoscoin_ismine: Used Address
+              aidoscoin_invalid: Invalid Address
         withdraw:
           account_balance_is_poor: Account balance is insufficient
           attributes:
@@ -244,6 +266,12 @@ en:
               poor: insufficient
               bank_min: Less 5000.00
         withdraws/satoshi:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/aidoscoin:
           attributes:
             fund_uid:
               blank: Please enter your withdrawal address
@@ -296,6 +324,7 @@ en:
       doge: DOGE
       pts: PTS
       ltc: LTC
+      adk: ADK
   currency:
     satoshi:
       key: BTC
@@ -321,6 +350,11 @@ en:
       key: PTS
       code: PTS
       name: Protoshare
+      format: '0,0.0000'
+    aidoscoin:
+      key: ADK
+      code: ADK
+      name: Aidoscoin
       format: '0,0.0000'
   datagrid:
     empty: no data found
@@ -463,13 +497,20 @@ en:
     satoshi:
       key: Block Chain
       title: Bitcoin Deposits
-      intro: Deposit bitcoin from your own wallet address to Peatio account
+      intro: Deposit bitcoin from your own wallet address to Aidos Exchange account
       latency: 1 confirmation
       transfer: Manual
       go: Deposit
     ether:
       key: ethereum
       title: Ethereum Deposits
+      intro: Deposit Ethereum from your own wallet address to Tradealtcoin account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
+    aidoscoin:
+      key: aidoscoin
+      title: Aidoscoin Deposits
       intro: Deposit Ethereum from your own wallet address to Tradealtcoin account
       latency: 1 confirmation
       transfer: Manual
@@ -486,6 +527,9 @@ en:
   private:
     deposits:
       satoshis:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      aidoscoins:
         gen_address:
           require_transaction: it can't generate new address if it hasn't been used.
       banks:
@@ -592,6 +636,21 @@ en:
           notice: Withdrawal request successfully submitted. Use the info below to
             complete the bank transfer.
       satoshis:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
+      aidoscoins:
         destroy:
           notice: Withdraw been canceled, frozen balance has returned to your account
         update:
@@ -773,6 +832,7 @@ en:
         all_html: "<i class='fa fa-check'></i><span>All Markets</span>"
         cny_html: "<i class='fa fa-check'></i><span>CNY Markets</span>"
         btc_html: "<i class='fa fa-check'></i><span>BTC Markets</span>"
+        adk_html: "<i class='fa fa-check'></i><span>ADK Markets</span>"
         price: Price
         change: "24h %"
       range_switch:
@@ -1023,15 +1083,15 @@ en:
       panel: Login
       new:
         title: Login my account
-        intro: Login Peatio now for you to exchange.
+        intro: Login Aidos Exchange now for you to exchange.
       failure:
         title: Login my account
-        intro: Login Peatio now for you to exchange.
+        intro: Login Aidos Exchange now for you to exchange.
     identities:
       panel: Create Account
       new:
         title: Create My Account
-        intro: This will be your only ID on Peatio which is necessary for your exchange
+        intro: This will be your only ID on Aidos Exchange which is necessary for your exchange
           , deposit and withdrawal . please fill it out carefully.
       edit:
         panel: My Account
@@ -1068,6 +1128,9 @@ en:
         bank:
           sum: Minimum amount 100
         satoshi:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
+        aidoscoin:
           sum: Minimum amount 0.001
           fund_extra: Enter a label for this address (optional)
     hints:
@@ -1149,6 +1212,14 @@ en:
           fund_extra: Label
           account_balance: Account Balance
           member_name: Account
+        aidoscoin:
+          fee: Fee
+          sum: Amount
+          fund_uid: Aidoscoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
+
   admin:
     deposits:
       banks:
@@ -1255,7 +1326,25 @@ en:
           succeed_confirm: Process withdrawal?
           reject_confirm: Reject withdrawal?
           withdraw: Withdrawals
+      aidoscoins:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
   deposits/satoshi:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/aidoscoin:
     aasm_state:
       submitted: Submitted
       accepted: Accepted
@@ -1268,7 +1357,7 @@ en:
       trade: Submit and cancel orders
     authorizations:
       new:
-        title: Peatio Application Authorization
+        title: Aidos Exchange Application Authorization
         authorize_html: Authorize <strong class='text-info'>%{name}</strong> to use
           your account?
         scopes: 'This application will be able to:'
@@ -1326,6 +1415,14 @@ en:
       member_name: Member
       state_and_actions: State/Actions
       currency_obj_key_text: Currency
+    aidoscoin:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
     bank:
       sn: SN
       amount: Amount
@@ -1357,6 +1454,7 @@ en:
     currency:
       cny: CNY
       btc: BTC
+      adk: ADK
     order:
       state:
         done: DONE
@@ -1383,8 +1481,9 @@ en:
         canceled: Canceled
     fund_source:
       category:
-        satoshi: Bitcoin
         bank: Bank
+        satoshi: Bitcoin
+        aidoscoin: Aidoscoin
     id_document:
       id_document_type:
         id_card: ID Card
@@ -1403,41 +1502,41 @@ en:
 
   mailer:
     dear_user: Dear user,
-    signature: Thanks,<br/>The Peatio Team
+    signature: Thanks,<br/>The Aidos Exchange Team
     please_contact: If it's not you, please <a href='mailto:%{contact_mail}'>contact us</a> ASAP.
     footer: This is an automatically generated email, please do not reply, if you have any question, please <a href="mailto:%{contact_mail}">contact us</a>.
   comment_mailer:
     admin_notification:
-      subject: "[PEATIO] User reply a ticket"
+      subject: "[Aidos Exchange] User reply a ticket"
       notification_content: User %{email} reply a ticket, please follow the link below to see the detail
     user_notification:
-      subject: "[PEATIO] Your ticket got a new reply"
+      subject: "[Aidos Exchange] Your ticket got a new reply"
       notification_content: 'Your ticket got a new reply, please follow the link below to see the detail:'
   deposit_mailer:
     accepted:
-      subject: "[Peatio] Your deposit has been credited into your account"
+      subject: "[Aidos Exchange] Your deposit has been credited into your account"
       content: Your %{currency} deposit has been credited into your account.
   member_mailer:
     notify_signin:
-      subject: "[PEATIO] You have just signed in"
+      subject: "[Aidos Exchange] You have just signed in"
       just_signed_in: You have just signed in.
     google_auth_activated:
-      subject: "[PEATIO] Google authenticator activated"
+      subject: "[Aidos Exchange] Google authenticator activated"
       google_auth_activated: You have activated google authenticator successfully
     google_auth_deactivated:
-      subject: "[PEATIO] Google authenticator deactivated"
+      subject: "[Aidos Exchange] Google authenticator deactivated"
       google_auth_deactivated: You have deactivated google authenticator successfully
     sms_auth_activated:
-      subject: "[PEATIO] SMS authenticator activated"
+      subject: "[Aidos Exchange] SMS authenticator activated"
       sms_auth_activated: You have activated SMS authenticator successfully
     sms_auth_deactivated:
-      subject: "[PEATIO] SMS authenticator deactivated"
+      subject: "[Aidos Exchange] SMS authenticator deactivated"
       sms_auth_deactivated: You have deactivated SMS authenticator successfully
     reset_password_done:
-      subject: "[PEATIO] Your password changed"
+      subject: "[Aidos Exchange] Your password changed"
       successful: Your password has been changed successfully.
     phone_number_verified:
-      subject: "[PEATIO] Your phone number verified"
+      subject: "[Aidos Exchange] Your phone number verified"
       verified: 'Your phone number verified: %{phone_number}'
   system_mailer:
     daily_stats:
@@ -1450,33 +1549,33 @@ en:
       trades_change_total: Trades Changes Total
   ticket_mailer:
     admin_notification:
-      subject: "[PEATIO] User created a new ticket"
+      subject: "[Aidos Exchange] User created a new ticket"
       admin_notification_content: User %{email} created a new ticket, please follow the link below to see the detail
     author_notification:
-      subject: "[PEATIO] Thank you for submit ticket"
+      subject: "[Aidos Exchange] Thank you for submit ticket"
       thanks_for_submit_ticket: Thank you for submit ticket to us, we will get back to you as soon as possible.
   token_mailer:
     activation:
-      subject: "[Peatio] Account Activation"
-      click_to_verify: 'Thank you for signing up on Peatio, please follow this link to verify your Email:'
+      subject: "[Aidos Exchange] Account Activation"
+      click_to_verify: 'Thank you for signing up on Aidos Exchange, please follow this link to verify your Email:'
       unable_to_click: Copy and open the link in your browser if you are unable to click and visit it.
       link_expire: The link expires in 30 minutes.
     reset_password:
-      subject: "[Peatio] Please Reset Your Password"
+      subject: "[Aidos Exchange] Please Reset Your Password"
       hi: Hi,
       follow_the_link: 'Please follow this link to reset your password within 30 minutes:'
   withdraw_mailer:
     submitted:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Aidos Exchange] Your withdraw state update"
       content: The request of your %{currency} withdrawal has been successfully submitted, We will process it as soon as possible. Please be patient with us. Contact us if you have any questions.
     processing:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Aidos Exchange] Your withdraw state update"
       content: The request of your %{currency} withdrawal is in process. Please be patient with us. Contact us if you have any questions.
     done:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Aidos Exchange] Your withdraw state update"
       content: The request of your %{currency} withdrawal is complete. Please check it out. Contact us if you have any questions.
     withdraw_state:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Aidos Exchange] Your withdraw state update"
       your_state: 'Your withdrawal state: '
 
   'true': true
@@ -1496,9 +1595,9 @@ en:
   gon:
     ask: Ask
     bid: Bid
-    brand: Peatio Exchange
+    brand: Aidos Exchange
     notification:
-      title: Peatio Exchange
+      title: Aidos Exchange
       enabled: Notification enabled.
       new_trade: "%{kind} order#%{id} executed at %{price} %{quote_unit} for %{volume} %{base_unit}。"
   back: Back
@@ -1705,9 +1804,9 @@ en:
     application:
       close: Close
     meta:
-      page_title: Peatio - The Opensource Cryptocurrency Exchange
-      page_description: Peatio - The Opensource Cryptocurrency Exchange
-      page_keywords: Peatio,Opensource,Exchange,Cryptocurrency
+      page_title: Aidos Exchange
+      page_description: Aidos Exchange
+      page_keywords: Aidos,Opensource,Exchange,Cryptocurrency
   members:
     edit:
       name: Please fill out the application.
@@ -1791,7 +1890,7 @@ en:
       edit:
         submit: Disable
         warning: 'Tip: If you have lost your Two-Factor Authentication by some reason
-          and can''t login your Peatio account, please contact our online customer
+          and can''t login your Aidos Exchange account, please contact our online customer
           service.'
       show:
         step-1: Step 1
@@ -1859,6 +1958,13 @@ en:
       latency: 30 minutes
       transfer: Manual
       go: Withdraw
+    aidoscoin:
+      key: aidoscoin
+      title: Aidoscoin Mesh
+      intro: Withdraw Aidoscoin to your own ADK wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
   withdraws:
     invalid_address: is not valid. You can not withdraw to this address.
   withdraws/bank:
@@ -1885,3 +1991,16 @@ en:
       almost_done: Almost Done
       canceled: Cancelled
       failed: Failed
+  withdraws/aidoscoin:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+

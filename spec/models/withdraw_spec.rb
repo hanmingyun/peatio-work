@@ -12,7 +12,7 @@ describe Withdraw do
   context 'fund source' do
     it "should strip trailing spaces in fund_uid" do
       fund_source = create(:btc_fund_source, uid: 'test   ')
-      @withdraw = create(:satoshi_withdraw, fund_source_id: fund_source.id)
+      @withdraw = create(:satoshi_withdraw, fund_source: fund_source.id)
       @withdraw.fund_uid.should == 'test'
     end
   end
@@ -86,6 +86,7 @@ describe Withdraw do
       before do
         Timecop.freeze(Time.local(2013,10,7,18,18,18))
         @withdraw = create(:satoshi_withdraw, id: 1)
+        @withdraw = create(:aidoscoin_withdraw, id: 1)
       end
 
       after do
@@ -103,7 +104,7 @@ describe Withdraw do
 
     describe 'account id assignment' do
       subject { build :satoshi_withdraw, account_id: 999 }
-
+      subject { build :aidoscoin_withdraw, account_id: 999 }
       it "don't accept account id from outside" do
         subject.save
         expect(subject.account_id).to eq(subject.member.get_account(subject.currency).id)
@@ -113,6 +114,20 @@ describe Withdraw do
 
   context 'Worker::WithdrawCoin#process' do
     subject { create(:satoshi_withdraw) }
+    before do
+      @rpc = mock()
+      @rpc.stubs(getbalance: 50000, sendtoaddress: '12345', settxfee: true )
+      @broken_rpc = mock()
+      @broken_rpc.stubs(getbalance: 5)
+
+      subject.submit
+      subject.accept
+      subject.process
+      subject.save!
+    end
+
+
+   subject { create(:aidoscoin_withdraw) }
     before do
       @rpc = mock()
       @rpc.stubs(getbalance: 50000, sendtoaddress: '12345', settxfee: true )

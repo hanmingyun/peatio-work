@@ -1,0 +1,31 @@
+.row
+  .col-xs-12
+    .panel.panel-primary
+      .panel-heading
+        span = t('.withdraw', sn: @aidoscoin.id)
+      .panel-body
+        = description_for :withdraw do
+          = item_for @aidoscoin, :id
+          = item_for @aidoscoin, :created_at
+          = item_for @aidoscoin, :aasm_state_text
+          hr.split
+          = item_for @aidoscoin.member, :name
+          = item_for @aidoscoin, :fund_extra
+          = item_for @aidoscoin, :fund_uid do
+            span = @aidoscoin.fund_uid.truncate(22)
+          = item_for @aidoscoin, :amount
+          hr.split
+          = item_for @aidoscoin, :remark
+          hr.split
+          ul.list-inline.pull-right
+            - if @aidoscoin.may_reject?
+              li
+                = link_to t('.reject'), url_for([:admin, @aidoscoin]), class: 'btn btn-danger', method: 'DELETE', confirm: t('.reject_confirm')
+            - if @aidoscoin.may_process?
+              li
+                = link_to t('.process'), url_for([:admin, @aidoscoin]), class: 'btn btn-primary', method: 'PATCH'
+
+  .col-xs-12
+    = render partial: 'shared/admin/member', locals: {member: @aidoscoin.member}
+    = render partial: 'shared/admin/account', locals: {account: @aidoscoin.account}
+

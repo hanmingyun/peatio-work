@@ -1,0 +1,12 @@
+- unless @one_aidoscoins.empty?
+  .panel.panel-primary
+    .panel-heading: span = t('.one')
+    = render partial: 'table', locals: {aidoscoins: @one_aidoscoins}
+- unless @all_aidoscoins.empty?
+  .panel.panel-success
+    .panel-heading: span = t('.all')
+    = render partial: 'table', locals: {aidoscoins: @all_aidoscoins}
+
+- if @all_aidoscoins.empty? and @one_aidoscoins.empty?
+  h3.text-info.text-center = t('.empty')
+
