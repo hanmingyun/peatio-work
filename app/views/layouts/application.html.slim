@@ -12,6 +12,7 @@ html lang="en"
     = render 'shared/meta'
     = csrf_meta_tags
 
-  body id='#{body_id}' data-lang="#{locale_name}"
+
     = render 'shared/alert'
-    = render 'shared/sidebar'
+	section#control
+		= render 'shared/sidebar'
