@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <%= stylesheet_link_tag "login", media: "all" %>
+    <%= javascript_include_tag "application" %>
+</head>
+<body>
+	<%= render 'shared/sidebar'%>
+	<!-- main section starts -->
+	<section id="main">
+		<div >
+			<div>
+				<%= render 'shared/new_header'%>
+				<div class="login">
+					<div class="main_box">
+						<h1>MAY THE GOD OF WEALTH BLESS<br/> YOUR TRADING</h1>
+						<div class="login_con">
+							<%= form_for @identity, :url => '/auth/identity/callback', :method => :post do |f|%>
+							<%= f.text_field :email,  placeholder: t('simple_form.placeholders.session.email')%>
+							<%= f.password_field :password, :as => 'password', placeholder: t('simple_form.placeholders.session.password')%>
+							<!-- button for login starts-->
+							<input type="submit" value="Login"/>
+
+							<%#= f.button :wrapped, t('header.signin')%>
+							<!-- button for login ends-->
+							<%end %>
+						</div>
+							<p class="text-center top_space">Don’t have an account?</p>
+							<p class="text-center"><a href="#">Find out</a> how to open it. <a href="<%=new_reset_password_path%>">Forget</a> your login information?</p>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!-- footer section starts -->
+		<%= render 'shared/footer'%>
+		<!-- footer section ends -->
+	</section>
+	<!-- main section ends -->
+	
+
+    
+
+</body>
+
+</html>

@@ -1,25 +1,27 @@
-nav.navbar.navbar-default.navbar-fixed-top.sticky
-  div
-    .navbar-header
-      button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button" 
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand href="#" 
-        img src="images/Final.png" /
-    #navbar.navbar-collapse.collapse
-      .logo.text-center
-        img src="images/Final.png" /
-      ul.nav.navbar-nav
-        li
-          a href="#"  My Account
-        li.active
-          a href="#"  Order Book
-        li
-          a href="#"  Exchange
-        li
-          a href="#"  Settings
-        li
-          a href="#"  About Caishen
-    /! /.nav-collapse
+
+section#control
+  nav.navbar.navbar-default.navbar-fixed-top.sticky
+    div
+      .navbar-header
+        button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button" 
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand href="#" 
+          img src="#{asset_path('Final.png')}" /
+      #navbar.navbar-collapse.collapse
+        .logo.text-center
+          img src="#{asset_path('Final.png')}" /
+        ul.nav.navbar-nav
+          li
+            a href="#"  My Account
+          li.active
+            a href="#"  Order Book
+          li
+            a href="#"  Exchange
+          li
+            a href="#"  Settings
+          li
+            a href="#"  About Caishen
+      /! /.nav-collapse
