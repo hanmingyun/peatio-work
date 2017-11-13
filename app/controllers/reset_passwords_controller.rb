@@ -3,7 +3,8 @@ class ResetPasswordsController < ApplicationController
 
   before_action :auth_anybody!
   before_action :token_required, :only => [:edit, :update]
-
+  layout "login", :only => [ :new ]
+  
   def new
     @token = Token::ResetPassword.new
   end

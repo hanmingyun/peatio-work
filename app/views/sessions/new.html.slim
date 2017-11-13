@@ -1,13 +1,19 @@
-= simple_form_for @identity, :url => '/auth/identity/callback', :method => :post do |f|
-  = f.input :email, :input_html => {:name => 'auth_key', :autofocus => 'true'}, label: t('simple_form.labels.session.email'), placeholder: t('simple_form.placeholders.session.email')
-  = f.input :password, :as => 'password', :input_html => {:name => 'password'}, label: t('simple_form.labels.session.password'), placeholder: t('simple_form.placeholders.session.password')
-  - if require_captcha?
-    = f.input :captcha, required: true, label: t('simple_form.labels.session.captcha') do
-      = show_simple_captcha
-  hr.split
-  = f.button :wrapped, t('header.signin'), cancel: root_path
-
-= content_for :guide do
-  ul.list-unstyled
-    li: a href='#{new_reset_password_path}' = t('.reset_password')
-    li: a href='#{signup_path}' = t('header.signup')
+.login
+  .main_box
+    h1
+      | MAY THE GOD OF WEALTH BLESS
+      br/
+      | YOUR TRADING
+    .login_con
+      = form_for @identity, :url => '/auth/identity/callback', :method => :post do |f|
+        = text_field_tag :auth_key, nil,  placeholder: t('simple_form.placeholders.session.email')
+        = password_field_tag :password,nil, :as => 'password', placeholder: t('simple_form.placeholders.session.password')
+        /! button for login starts
+        input type="submit" value="Login"
+        /! button for login ends
+      p.text-center.top_space Don’t have an account?
+      p.text-center
+        a href="/signup"  Find out
+        |  how to open it.
+        a href="#{new_reset_password_path}"  Forget
+        |  your login information?

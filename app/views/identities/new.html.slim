@@ -1,10 +1,20 @@
-= simple_form_for @identity, :url => '/auth/identity/register' do |f|
-  = f.input :email, :input_html => {:name => 'email', :autofocus => 'true'}
-  = f.input :password, :input_html => {:name => 'password'}
-  = f.input :password_confirmation, :input_html => {:name => 'password_confirmation'}
-  hr.split
-  = f.button :wrapped, t('header.signup'), cancel: root_path
-
-= content_for :guide do
-  ul.list-unstyled
-    li: a href='#{signin_path}'= t('.signin')
+.login
+  .main_box
+    h1
+      | MAY THE GOD OF WEALTH BLESS
+      br/
+      | YOUR TRADING
+    .login_con
+      = form_for @identity, :url => '/auth/identity/register', :method => :post do |f|
+        = text_field_tag :email, nil, :autofocus => 'true',  placeholder: t('simple_form.placeholders.session.email')
+        = password_field_tag :password,nil, :as => 'password', placeholder: t('simple_form.placeholders.session.password')
+        = password_field_tag :password_confirmation,nil, placeholder: 'Password Confirmation'
+        /! button for login starts
+        input type="submit" value="Sign Up"
+        /! button for login ends
+      p.text-center.top_space Don’t have an account?
+      p.text-center
+        a href="/signin"  Find out
+        |  how to open it.
+        a href="#{new_reset_password_path}"  Forget
+        |  your login information?
