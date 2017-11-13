@@ -2,7 +2,7 @@
   header {
     overflow: hidden;
     position: relative;
-    color: rgba(83,102,120, 1.0);
+    color: #FFF;
 
     .container {
       padding-top: 60px;
@@ -36,12 +36,21 @@
       padding: 30px;
       padding-top: 14px;
       margin: 30px;
-      border-top: 1px dashed lighten($brand-primary, 20%);
-      border-bottom: 1px dashed lighten($brand-primary, 20%);
+      border-top: 1px dashed lighten($welcome-dot, 20%);
+      border-bottom: 1px dashed lighten($welcome-dot, 20%);
     }
 
     #getstart {
       margin-bottom: 50px;
+		
+	  .btn-lg, .btn-group-lg>.btn {
+		border-radius: 20px;
+	  }
+	  
+	  .btn-primary {
+		background-color: #158dff;
+		border-color: #157fe3;
+	  }
     }
   }
 }
