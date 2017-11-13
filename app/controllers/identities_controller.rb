@@ -1,6 +1,7 @@
 class IdentitiesController < ApplicationController
   before_filter :auth_anybody!, only: :new
-
+  layout "login", :only => [ :new ]
+  
   def new
     @identity = env['omniauth.identity'] || Identity.new
   end

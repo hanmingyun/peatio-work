@@ -1,4 +1,18 @@
-= simple_form_for @token, url: reset_passwords_path, as: :reset_password do |f|
-  = f.input :email
-  hr.split
-  = f.button :wrapped, cancel: signin_path
+.login
+  .main_box
+    h1
+      | MAY THE GOD OF WEALTH BLESS
+      br/
+      | YOUR TRADING
+    .login_con
+      = form_for @token, url: reset_passwords_path, as: :reset_password do |f|
+        = f.text_field :email,  placeholder: t('simple_form.placeholders.session.email')
+        /! button for login starts
+        input type="submit" value="Reset Sign in Password"
+        /! button for login ends
+      p.text-center.top_space Don’t have an account?
+      p.text-center
+        a href="/signup"  Find out
+        |  how to open it.
+        a href="#{new_reset_password_path}"  Forget
+        |  your login information?
