@@ -59,6 +59,11 @@ body{
  .top_bar ul li.yellow span{
 	color:#ffbd1a;	
  }
+ .top_bg_box{
+    position: relative;
+    top: 12px;
+    color: #fff;
+}
 .login{
  	background: #062d4a;
     min-height: 83vh;

@@ -30,4 +30,13 @@ span.top_bar
       span 
       | &nbsp;
       = @aidos_kuneen_data[0]['price_eur'].to_f.round(2)
-#top_bg
+#top_bg.main-body
+  - if current_user
+    .row.top_bg_box
+      .col-md-8
+        | Account N: #{current_user.sn}
+      .col-md-4
+        a.btn.btn-default.pull-right href="/signout" 
+          | Logout
+
+
