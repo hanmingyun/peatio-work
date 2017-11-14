@@ -34,7 +34,9 @@ module ApplicationHelper
   end
 
   def check_active(klass)
-    if klass.is_a? String
+    if params[:controller] =='identities' && params[:controller] == klass
+      return 'active'
+    elsif klass.is_a? String
       return 'active' unless (controller.controller_path.exclude?(klass.singularize))
     else
       return 'active' if (klass.model_name.singular == controller.controller_name.singularize)
