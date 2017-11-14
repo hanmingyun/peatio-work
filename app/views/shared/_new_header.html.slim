@@ -2,32 +2,32 @@ span.top_bar
   ul
     li.blue
       i.fa.fa-sort-asc aria-hidden="true" 
-      | ADK/USD
+      | BTC/USD
       span
       | &nbsp;
-      = @data[0]['price_usd'].to_f.round(2)
+      = @bitcoin_data[0]['price_usd'].to_f.round(2)
+    li.blue
+      i.fa.fa-sort-asc aria-hidden="true" 
+      | BTC/EUR
+      span
+      | &nbsp;
+      = @bitcoin_data[0]['price_eur'].to_f.round(2)
     li.blue
       i.fa.fa-sort-asc aria-hidden="true" 
       | ADK/USD
       span
       | &nbsp;
-      = @data[0]['price_usd'].to_f.round(2)
-    li.blue
-      i.fa.fa-sort-asc aria-hidden="true" 
-      | ADK/USD
-      span
-      | &nbsp;
-      = @data[0]['price_usd'].to_f.round(2)
+      = @aidos_kuneen_data[0]['price_usd'].to_f.round(2)
     li.yellow
       i.fa.fa-sort-desc aria-hidden="true" 
-      | ADK/USD
+      | ADK/BTC
       span 
       | &nbsp;
-      = @data[0]['price_usd'].to_f.round(2)
+      = @aidos_kuneen_data[0]['price_btc'].to_f.round(4)
     li.yellow
       i.fa.fa-sort-desc aria-hidden="true" 
-      | ADK/USD
+      | ADK/EUR
       span 
       | &nbsp;
-      = @data[0]['price_usd'].to_f.round(2)
+      = @aidos_kuneen_data[0]['price_eur'].to_f.round(2)
 #top_bg
