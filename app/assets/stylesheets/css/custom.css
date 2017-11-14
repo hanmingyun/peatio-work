@@ -61,7 +61,7 @@ body{
  }
 .login{
  	background: #062d4a;
-    min-height: 100vh;
+    min-height: 83vh;
     float: left;
 	width:100%;
 }
@@ -76,7 +76,7 @@ body{
     font-weight: 300;
 }
 .main_box{
-	padding-top:95px;
+	/*padding-top:95px;*/
 }
 .login_con{
 	padding: 35px 0px;
