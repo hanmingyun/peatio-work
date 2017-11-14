@@ -24,16 +24,14 @@ section#control
               i.fa.fa-bar-chart-o
               span 
               |  Solvency
-          li
-            a href="/funds"
+          li class = check_active('sessions')
+            a href="/signin"
               i.fa.fa-money
               span 
-              |  Fund
-          li
-            a href="/history/orders"
+              |  Login
+          li class = check_active('identities')
+            a href="/signup"
               i.fa.fa-book
               span 
-              |  History
-          li
-            a href="/settings"  Account Info
+              |  Signup
       /! /.nav-collapse
