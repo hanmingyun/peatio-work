@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user, :is_admin?, :current_market, :gon
-  before_action :set_timezone, :set_gon
+  before_action :set_timezone, :set_gon, :set_header_values
   after_action :allow_iframe
   after_action :set_csrf_cookie_for_ng
   rescue_from CoinRPC::ConnectionRefusedError, with: :coin_rpc_connection_refused
@@ -211,6 +211,11 @@ class ApplicationController < ActionController::Base
         memo
       end
     end
+  end
+
+  def set_header_values
+    response = Net::HTTP.get_response(URI("https://api.coinmarketcap.com/v1/ticker/Aidos-Kuneen/?convert=eur"))
+    @data = ActiveSupport::JSON.decode(response.body)
   end
 
   def coin_rpc_connection_refused
