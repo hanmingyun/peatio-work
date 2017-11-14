@@ -6,6 +6,10 @@
       | YOUR TRADING
     .login_con
       = form_for @identity, :url => '/auth/identity/register', :method => :post do |f|
+        - if @identity.errors.any?
+          - @identity.errors.full_messages.each do |message|
+            li
+              = message
         = text_field_tag :email, nil, :autofocus => 'true',  placeholder: t('simple_form.placeholders.session.email')
         = password_field_tag :password,nil, :as => 'password', placeholder: t('simple_form.placeholders.session.password')
         = password_field_tag :password_confirmation,nil, placeholder: 'Password Confirmation'
