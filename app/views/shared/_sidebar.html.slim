@@ -24,14 +24,26 @@ section#control
               i.fa.fa-bar-chart-o
               span 
               |  Solvency
-          li class = check_active('sessions')
-            a href="/signin"
-              i.fa.fa-money
-              span 
-              |  Login
-          li class = check_active('identities')
-            a href="/signup"
-              i.fa.fa-book
-              span 
-              |  Signup
+          - if current_user
+            li
+              a href="/funds" target="" 
+                i.fa.fa-money
+                span Funds
+            li
+              a href="/history/orders" target="" 
+                i.fa.fa-book
+                span History
+            = render partial: 'shared/header_profile_setting'
+          - else
+
+            li class = check_active('sessions')
+              a href="/signin"
+                i.fa.fa-money
+                span 
+                |  Login
+            li class = check_active('identities')
+              a href="/signup"
+                i.fa.fa-book
+                span 
+                |  Signup
       /! /.nav-collapse
