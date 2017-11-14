@@ -25,11 +25,11 @@ section#control
               span 
               |  Solvency
           - if current_user
-            li
+            li class = check_active('funds')
               a href="/funds" target="" 
                 i.fa.fa-money
                 span Funds
-            li
+            li class = check_active('history')
               a href="/history/orders" target="" 
                 i.fa.fa-book
                 span History
