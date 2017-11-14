@@ -95,17 +95,19 @@ html, body {
 }
 
 #push, footer {
-  height: $footer-height;
   box-sizing: 'border-box';
 }
 
 footer {
   color: $footer-color;
-  height: $footer-height;
   box-sizing: 'border-box';
   padding-top: 20px;
   background-color: $footer-bg;
   border-top: 1px solid $footer-border;
+  position: absolute;
+  bottom: 0;
+  width: 82%;
+  margin-left: 16%;
 }
 
 /* ticker

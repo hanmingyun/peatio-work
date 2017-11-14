@@ -64,6 +64,7 @@ body{
     top: 12px;
     color: #fff;
 }
+.btn_new{border-radius: 20px;}
 .login{
  	background: #062d4a;
     min-height: 83vh;
