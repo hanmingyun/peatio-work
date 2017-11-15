@@ -3,7 +3,7 @@ $(document).ready(function(){
 	  var total = $("#main .tabs-menu").width();
 	  var total2 = total;
 	  var ancho = total*4;
-	  $("#main .tabs-menu .wrapper").css({"width":ancho+"px"});
+	  // $("#main .tabs-menu .wrapper").css({"width":ancho+"px"});
 	  var tabs =  $("#main .tabs-menu li");
 	  
 	  $( window ).resize(function() {
