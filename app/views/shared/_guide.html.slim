@@ -2,7 +2,7 @@
   - if content_for?(:guide_title)
     = yield(:guide_title)
   - else
-    h3 = guide_title
+    h3 = current_user.email
   p.text-ignore = guide_intro
   - if content_for?(:guide)
     = yield(:guide)
