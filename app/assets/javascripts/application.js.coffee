@@ -80,9 +80,9 @@ $ ->
       url: '/coinmarketcap'
       success: (data) ->
         return
-    setTimeout executeQuery, 5000
+    setTimeout executeQuery, 10000
     return
 
   $(document).ready ->
-    setTimeout executeQuery, 5000
+    setTimeout executeQuery, 10000
     return
