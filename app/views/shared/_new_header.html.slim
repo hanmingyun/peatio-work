@@ -1,35 +1,5 @@
-span.top_bar.main-body
-  ul
-    li.blue
-      i.fa.fa-sort-asc aria-hidden="true" 
-      | BTC/USD
-      span
-      | &nbsp;
-      = @bitcoin_data[0]['price_usd'].to_f.round(2)
-    li.blue
-      i.fa.fa-sort-asc aria-hidden="true" 
-      | BTC/EUR
-      span
-      | &nbsp;
-      = @bitcoin_data[0]['price_eur'].to_f.round(2)
-    li.blue
-      i.fa.fa-sort-asc aria-hidden="true" 
-      | ADK/USD
-      span
-      | &nbsp;
-      = @aidos_kuneen_data[0]['price_usd'].to_f.round(2)
-    li.yellow
-      i.fa.fa-sort-desc aria-hidden="true" 
-      | ADK/BTC
-      span 
-      | &nbsp;
-      = @aidos_kuneen_data[0]['price_btc'].to_f.round(4)
-    li.yellow
-      i.fa.fa-sort-desc aria-hidden="true" 
-      | ADK/EUR
-      span 
-      | &nbsp;
-      = @aidos_kuneen_data[0]['price_eur'].to_f.round(2)
+span#coinmarketcap.top_bar.main-body
+  = render 'shared/coinmarketcap'
 #top_bg.main-body
   - if current_user
     .row.top_bg_box

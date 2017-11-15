@@ -75,3 +75,14 @@ $ ->
   FlashMessageUI.attachTo('.flash-message')
   SmsAuthVerifyUI.attachTo('#edit_sms_auth')
   TwoFactorAuth.attachTo('.two-factor-auth-container')
+  executeQuery = ->
+    $.ajax
+      url: '/coinmarketcap'
+      success: (data) ->
+        return
+    setTimeout executeQuery, 5000
+    return
+
+  $(document).ready ->
+    setTimeout executeQuery, 5000
+    return

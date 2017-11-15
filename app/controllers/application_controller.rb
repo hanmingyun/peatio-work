@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user, :is_admin?, :current_market, :gon
-  before_action :set_timezone, :set_gon, :set_header_values
+  before_action :set_timezone, :set_gon
   after_action :allow_iframe
   after_action :set_csrf_cookie_for_ng
   rescue_from CoinRPC::ConnectionRefusedError, with: :coin_rpc_connection_refused
@@ -213,13 +213,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_header_values
-    aidos_kuneen_response = Net::HTTP.get_response(URI("https://api.coinmarketcap.com/v1/ticker/Aidos-Kuneen/?convert=eur"))
-    bitcoin_response = Net::HTTP.get_response(URI("https://api.coinmarketcap.com/v1/ticker/Bitcoin/?convert=eur"))
-
-    @aidos_kuneen_data = ActiveSupport::JSON.decode(aidos_kuneen_response.body)
-    @bitcoin_data = ActiveSupport::JSON.decode(bitcoin_response.body)
-  end
+  
 
   def coin_rpc_connection_refused
     render 'errors/connection'
