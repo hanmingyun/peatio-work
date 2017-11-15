@@ -28,6 +28,7 @@
 @import 'features/simple_captcha';
 @import 'features/custom';
 @import 'css/custom';
+@import 'css/tab';
 
 
 /* layouts
@@ -100,8 +101,7 @@ html, body {
 footer {
   position: fixed;
   bottom: 0;
-  width: 84%;
-  margin-left: 16%;
+  width: 85%;
 }
 
 /* ticker

@@ -16,7 +16,7 @@ html lang="en"
     = render 'shared/alert'
   body id='#{body_id}' data-lang="#{locale_name}"
     = render 'shared/sidebar'
-    section
+    section#main
       div 
         div          
           - if content_for?(:header)
@@ -24,8 +24,8 @@ html lang="en"
         - else
           = render 'shared/new_header'
         .main-body
-          = render 'shared/alert'
-          = render 'shared/flash'
+          /= render 'shared/alert'
+          /= render 'shared/flash'
         - if content_for?(:frame)
           = yield(:frame)
         - else

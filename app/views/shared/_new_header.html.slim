@@ -1,11 +1,11 @@
-span#coinmarketcap.top_bar.main-body
+span#coinmarketcap.top_bar
   = render 'shared/coinmarketcap'
-#top_bg.main-body
+#top_bg
   - if current_user
     .row.top_bg_box
       .col-md-8
         | Account N: #{current_user.sn}
-      .col-md-12
+      .col-md-12.logout
         a.btn.btn-default.pull-right.btn_new href="/signout" 
           | Logout
 
