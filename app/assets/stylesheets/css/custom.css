@@ -4,7 +4,7 @@ body{
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #062d4a;
+    background-color: #08375c;;
 	overflow-x: hidden;
 }
 *, ul{
@@ -14,6 +14,23 @@ body{
 :focus{
 	outline: none;
 }
+.main-sidebar {
+	background: #158dff;
+	color: white;
+}
+
+header a {
+	color: white;
+}
+
+.sidebar-menu li{
+	line-height: 3em;
+}
+
+.main-sidebar a{
+	color: white;
+}
+
 #control{
 	width: 230px;
 }
@@ -28,6 +45,20 @@ body{
 	width:100%;
 	float:left;
 	padding: 0 20px;
+	min-height: 50px;
+}
+
+.top_bar a {
+	padding-top: 0px !important;
+	color: white;
+}
+
+.content-wrapper {
+	background: #062d4a;
+}
+
+.top_bar ul {
+	padding-top: 12px;
 }
 .top_bar ul li{
 	list-style: none;
@@ -59,15 +90,9 @@ body{
  .top_bar ul li.yellow span{
 	color:#ffbd1a;	
  }
- .top_bg_box{
-    position: relative;
-    top: 12px;
-    color: #fff;
-}
-.btn_new{border-radius: 20px;}
 .login{
  	background: #062d4a;
-    min-height: 83vh;
+    min-height: 70vh;
     float: left;
 	width:100%;
 }
@@ -82,7 +107,7 @@ body{
     font-weight: 300;
 }
 .main_box{
-	/*padding-top:95px;*/
+	padding-top:95px;
 }
 .login_con{
 	padding: 35px 0px;
@@ -148,29 +173,29 @@ body{
     float: left;
     height: 100%;
 }
-.navbar-nav li.active{
+.sidebar-menu li.active{
 	background: #062d4a;
     width: 100%;
 }
 .navbar-default .navbar-nav>li>a {
     font-size: 14px;
 }
-.logout{
-    width: 100%;
-    position: relative;
-    top: -22px;
+
+.sidebar-collapse footer {
+	margin-left: 50px !important;
 }
-footer{
+.sidebar-mini footer{
 	background: #08375c;
     line-height: 34px;
     padding: 0px 20px;
     color: #fff;
     font-size: 12px;
-    position: fixed;
-	bottom: 0;
-	width: 85%;
+    margin-left: 230px;
  }
+
+
 footer ul{
+	background: #08375c;
 	text-align: right;
     float: right;
 }
@@ -221,7 +246,6 @@ footer a:hover{
  		margin-top: 32px;
 		width: 100%;
 }
-#content, #guide{margin-left: 10%;}
 
 @media (min-width: 768px){
 	.navbar-brand{
@@ -244,14 +268,11 @@ footer a:hover{
     border: none;
 	}
 	.navbar-default .navbar-nav>li>a {
-		color: #fff !important;
+		color: #fff !imporatnt;
 	}	
 	.navbar-nav>li {
 		padding: 12px 31px;
 	}
-	footer{	
-		width: 87% !important;
- 	}
 }
 @media (width: 768px){
 	.navbar-default .navbar-collapse{
@@ -332,4 +353,11 @@ footer a:hover{
 	.top_bar {
 		padding: 0;
 	}
+}
+
+@media (max-width: 768px){ 
+	.sidebar-mini footer {
+		margin-left: 0;
+	}
+
 }
