@@ -3,13 +3,13 @@ $(document).ready(function(){
 	  var total = $("#main .tabs-menu").width();
 	  var total2 = total;
 	  var ancho = total*4;
-	  $("#main .tabs-menu .wrapper").css({"width":ancho+"px"});
+	  // $("#main .tabs-menu .wrapper").css({"width":ancho+"px"});
 	  var tabs =  $("#main .tabs-menu li");
 	  
 	  $( window ).resize(function() {
 	    var total2 = $("#main .tabs-menu").width();
 	    var ancho2 = total2*4;
-	    $("#main .tabs-menu .wrapper").css({"width":ancho2+"px"});
+	    // $("#main .tabs-menu .wrapper").css({"width":ancho2+"px"});
 	    var clase2 = $(".active").attr("id");
 	    $("#main .tabs-menu .wrapper").stop().animate({
 	      left: -(total2*(clase2-1)),
