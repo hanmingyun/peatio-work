@@ -1,5 +1,6 @@
 require_relative 'errors'
 require_relative 'validations'
+require_relative 'exception_handler'
 
 module APIv2
   class Mount < Grape::API
