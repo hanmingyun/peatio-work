@@ -15,10 +15,10 @@ body{
 	outline: none;
 }
 #control{
-	width: 100vw;
+	width: 230px;
 }
 #main{
-	width: calc(100vw - 16vw);
+	width: calc(100vw - 230px);
     float: right;
     background: #062d4a;
     margin-left: 17vw;
@@ -144,7 +144,7 @@ body{
 .navbar-default {
     background-color: #158dff;
     border-color: #e7e7e7;
-    width: calc(100vw - 84vw);
+    width: 230px;
     float: left;
     height: 100%;
 }
