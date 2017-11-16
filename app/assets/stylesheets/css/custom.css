@@ -249,6 +249,9 @@ footer a:hover{
 	.navbar-nav>li {
 		padding: 12px 31px;
 	}
+	footer{	
+		width: 87% !important;
+ 	}
 }
 @media (width: 768px){
 	.navbar-default .navbar-collapse{
