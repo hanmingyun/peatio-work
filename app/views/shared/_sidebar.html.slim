@@ -14,6 +14,7 @@ section#control
         .logo.text-center
           img src="#{asset_path('Final.png')}" /
         ul.nav.navbar-nav          
+          = render partial: 'shared/header_profile_setting'
           li
             a href="/markets/adkbtc" target="true" 
               i.fa.fa-exchange
@@ -33,17 +34,5 @@ section#control
               a href="/history/orders" target="" 
                 i.fa.fa-book
                 span History
-            = render partial: 'shared/header_profile_setting'
-          - else
-
-            li class = check_active('sessions')
-              a href="/signin"
-                i.fa.fa-money
-                span 
-                |  Login
-            li class = check_active('identities')
-              a href="/signup"
-                i.fa.fa-book
-                span 
-                |  Signup
+            
       /! /.nav-collapse

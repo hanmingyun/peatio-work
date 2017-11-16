@@ -2,7 +2,10 @@
 - dropdown_class = (controllers & controller_path.split('/')).empty? ? "" : 'active'
 li.dropdown.account-settings class = dropdown_class
   a.dropdown-toggle href="#" data-toggle="dropdown"
-    span.user_name = current_user.email || current_user.nickname
+    -if current_user
+      span.user_name = current_user.email || current_user.nickname
+    else
+      span.user_name = "My Account"
     - if current_user.unread_comments.count > 0
       | &nbsp;
       span.badge = current_user.unread_comments.count
