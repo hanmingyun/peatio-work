@@ -1,13 +1,14 @@
 - controllers = ['settings', 'two_factors', 'identities', 'id_documents', 'dashboard', 'tickets']
 - dropdown_class = (controllers & controller_path.split('/')).empty? ? "" : 'active'
 li.treeview
-	  a href="#" 
+	  a href="#"
+		i.fa.fa-user
 		span.user_name = current_user.email || current_user.nickname
 		- if current_user.unread_comments.count > 0
 		  | &nbsp;
 		  span.badge = current_user.unread_comments.count
-		span.pull-right-container
-		  i.fa.fa-angle-left.pull-right
+		
+		  
 	  ul.treeview-menu
 		li
 		  a href = settings_path 

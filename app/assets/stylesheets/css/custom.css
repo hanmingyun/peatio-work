@@ -9,7 +9,7 @@ body{
 }
 *, ul{
 	margin:0px;
-	padding:0px;
+	
 }
 :focus{
 	outline: none;
@@ -185,6 +185,9 @@ header a {
 	background: #062d4a;
     width: 100%;
 }
+.sidebar-menu li:hover{
+	background: #08375c;
+}
 .navbar-default .navbar-nav>li>a {
     font-size: 14px;
 }
@@ -211,6 +214,7 @@ footer ul li{
 	list-style: none;
     display: inline-block;
     padding: 0px 10px;
+	text-align:center;
 }
 footer a {
     color: #fff;
@@ -346,13 +350,17 @@ footer a:hover{
 		float: left;
 		margin: 0px;
 	}
-	footer ul {
+	.sidebar-mini footer {
+		margin-left: 0;
+		width: 100%;
+	}
+	
+	.sidebar-mini footer ul {
 		float: left;
 	}
-	footer ul li {
+	.sidebar-mini footer ul li {
 		display: block;
-		text-align: left;
-		 width: 45%;
+		width: 45%;
 		float: left;
 	}
 }
@@ -361,11 +369,16 @@ footer a:hover{
 	.top_bar {
 		padding: 0;
 	}
+	.sidebar-mini footer {
+		margin-left: 0;
+		width: 100%;
+	}
 }
 
 @media (max-width: 768px){ 
 	.sidebar-mini footer {
 		margin-left: 0;
+		width: 100%;
 	}
 
 }
