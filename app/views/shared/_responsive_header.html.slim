@@ -1,0 +1,15 @@
+/! Header Navbar: style can be found in header.less
+nav.navbar.navbar-static-top
+  ul.nav.navbar-nav
+	  span.top_bar
+		= render 'shared/coinmarketcap'
+  #top_bg
+	- if current_user
+		.row.top_bg_box
+		  .col-md-8.col-sm-6.col-xs-6
+			| Account N: #{current_user.sn}
+		  .col-md-12.logout
+			a.btn.btn-default.pull-right.btn_new href="/signout" 
+			  | Logout
+	
+		
