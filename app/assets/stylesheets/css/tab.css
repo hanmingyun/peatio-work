@@ -12,7 +12,7 @@ section.content .tabs-menu{
   background: #062d4a;
 }
 
-section.content .tabs-menu a{
+section.content .tabs-menu nav a{
   text-decoration:none;
   cursor:pointer;
   color: #fff;
@@ -50,6 +50,12 @@ section.content .tabs-menu{
 @media screen and(min-width: 900px) {
   .content, section.content .tabs-menu{width:900px;}
   
+}
+
+@media (max-width: 767px){
+	.main-sidebar {
+		padding-top: 150px;
+	}
 }
 h2{
   margin:0;
@@ -113,8 +119,19 @@ section.content .tabs-menu .wrapper{
 }
 section.content .tabs-menu .wrapper div{
   position:relative;
-  float:left;
+  
   z-index:1;
   
 }
+
+#funds-index .content-wrapper #tab_container .details-container .input-group {
+	display: table-cell;
+}
+
+#funds-index .content-wrapper #tab_container .details-container .input-group  .input-group-addon {
+	border-right: 1px solid #d2d6de;
+}
+
+
+
 
