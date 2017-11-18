@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= Member.current = Member.enabled.where(id: session[:member_id]).first
+    @current_user ||= Member.current = Member.enabled.where(id: session[:member_id]).last
   end
 
   def auth_member!

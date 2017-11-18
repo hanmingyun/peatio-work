@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   before_action :auth_member!, only: :destroy
   before_action :auth_anybody!, only: [:new, :failure]
-  before_action :add_auth_for_weibo
+ # before_action :add_auth_for_weibo
   layout "login", :only => [ :new ]
   helper_method :require_captcha?
 
@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if !require_captcha? || simple_captcha_valid?
+   # if !require_captcha? || simple_captcha_valid?
       @member = Member.from_auth(auth_hash)
-    end
+    #end
 
     if @member
       # if @member.disabled?
