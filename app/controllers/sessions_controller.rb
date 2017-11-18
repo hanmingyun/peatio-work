@@ -18,10 +18,10 @@ class SessionsController < ApplicationController
     end
 
     if @member
-      if @member.disabled?
-        increase_failed_logins
-        redirect_to signin_path, alert: t('.disabled')
-      else
+      # if @member.disabled?
+      #   increase_failed_logins
+      #   redirect_to signin_path, alert: t('.disabled')
+      # else
         clear_failed_logins
         reset_session rescue nil
         session[:member_id] = @member.id
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
         save_signup_history @member.id
         MemberMailer.notify_signin(@member.id).deliver if @member.activated?
         redirect_back_or_settings_page
-      end
+      # end
     else
       increase_failed_logins
       redirect_to signin_path, alert: t('.error')
