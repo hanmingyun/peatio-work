@@ -59,6 +59,7 @@ header a {
 
 .top_bar ul {
 	padding-top: 12px;
+	padding-left: 0px;
 }
 .top_bar ul li{
 	list-style: none;

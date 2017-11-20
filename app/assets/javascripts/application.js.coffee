@@ -32,6 +32,8 @@
 #= require_tree ./component_ui
 #= require_tree ./templates
 #= require js/tab
+#= require js/adminlte.min
+
 $ ->
   BigNumber.config(ERRORS: false)
 
