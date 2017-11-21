@@ -7,6 +7,9 @@
 #= require ./router
 #= require ./events
 
+#= require ../js/tab
+#= require ../js/adminlte.min
+
 $ ->
   window.pusher_subscriber = new PusherSubscriber()
 

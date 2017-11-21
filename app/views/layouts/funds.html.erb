@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="funds">
   <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%- stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : "application" %>
-
-    <link href="/favicon.ico" rel="shortcut icon"></link>
+	<link href="/favicon.ico" rel="shortcut icon"></link>
     <%= include_gon %>
     <%= stylesheet_link_tag stylesheet, media: "all" %>
     <%= javascript_include_tag "locales/#{I18n.locale}" %>
     <%= javascript_include_tag "funds" %>
-    <%= yield(:scripts) if content_for?(:scripts) %>
+	<%= yield(:scripts) if content_for?(:scripts) %>
     <%= render 'shared/html5' %>
     <%= render 'shared/meta' %>
     <%= csrf_meta_tags %>
   </head>
-
-  <body id="<%= body_id %>" data-lang="<%= "#{locale_name}" %>">
-
-    <div id="wrap">
-      <%- if content_for?(:header) %>
-        <%= yield(:header) %>
-      <%- else %>
-        <%= render 'shared/header' %>
-      <%- end %>
-
-      <div class='container'>
-        <%= yield %>
-      </div>
-      <div id="push"></div>
-    </div>
-
-    <%- if content_for?(:footer) %>
-      <%= yield(:footer) %>
-    <%- else %>
-      <%= render 'shared/footer' %>
-    <%- end %>
-
-  </body>
+	<body id="<%= body_id %>" class="hold-transition skin-blue sidebar-mini" data-lang="<%= "#{locale_name}" %>">
+		<div class="wrapper">
+			<header class="main-header">
+				<%= render 'shared/responsive_header'%>
+			</header>
+			
+			<aside class="main-sidebar">
+				<%= render 'shared/responsive_sidebar'%>
+			</aside>
+			
+			<div class="content-wrapper">
+				<section  class="content">
+					<%= render 'shared/alert'%>
+					<%= render 'shared/flash'%>
+					<div id="tab_container">
+						<div class="tabs-menu">
+							<nav>
+								<ul>
+									<li class="active" id="1"><a href="#"><span>Funds</span></a></li>
+								</ul>
+							</nav>	
+							<div class="content">
+								<div class="wrapper">
+									<div>
+										<%= yield %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			
+			<!-- footer section starts -->
+			<%= render 'shared/footer'%>
+			<!-- footer section ends -->
+		</div>
+	 </body>
 </html>
 

@@ -5,6 +5,7 @@
 #= require jquery-timing.min
 #= require bootstrap
 #= require bootstrap-switch.min
+#= require js/adminlte.min
 #= require scrollIt
 #= require moment
 #= require bignumber
@@ -31,6 +32,8 @@
 #= require_tree ./component_ui
 #= require_tree ./templates
 #= require js/tab
+#= require js/adminlte.min
+
 $ ->
   BigNumber.config(ERRORS: false)
 

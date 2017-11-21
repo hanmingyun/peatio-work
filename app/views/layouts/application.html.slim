@@ -2,6 +2,8 @@ doctype html
 html lang="en"
   head
     link href="/favicon.ico" rel="shortcut icon"
+	meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+	meta[name="viewport" content="width=device-width, initial-scale=1"]
     = include_gon
     - stylesheet = content_for?(:stylesheet) ? yield(:stylesheet) : "application"
     = stylesheet_link_tag stylesheet, media: "all"
@@ -11,24 +13,27 @@ html lang="en"
     = render 'shared/html5'
     = render 'shared/meta'
     = csrf_meta_tags
-
-
     = render 'shared/alert'
-  body id='#{body_id}' data-lang="#{locale_name}"
-    = render 'shared/sidebar'
-    section#main
-      div 
-        div          
-          - if content_for?(:header)
-          = yield(:header)
-        - else
-          = render 'shared/new_header'
-        .main-body
-          /= render 'shared/alert'
-          /= render 'shared/flash'
-        - if content_for?(:frame)
-          = yield(:frame)
-        - else
-          = render 'shared/frame'
-        #push
-          = render 'shared/footer'
+	body id='#{body_id}' class='hold-transition skin-blue sidebar-mini' data-lang="#{locale_name}"
+		
+		.wrap
+			header.main-header
+				= render 'shared/responsive_header'
+			aside.main-sidebar
+				= render 'shared/responsive_sidebar'
+			
+			.content-wrapper
+				section.content
+					= render 'shared/alert'
+					- if content_for?(:frame)
+						= yield(:frame)
+					- else
+						= render 'shared/frame'
+						
+			- if content_for?(:footer)
+				= yield(:footer) 
+			- else
+				= render 'shared/footer'
+				
+	
+	

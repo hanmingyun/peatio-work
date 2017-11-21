@@ -30,6 +30,9 @@
       span 
       | &nbsp;
       = @aidos_kuneen_data[0]['price_eur'].to_f.round(2)
+	/! Sidebar toggle button
+	a.sidebar-toggle data-toggle="push-menu" href="#" role="button" 
+		span.sr-only Toggle navigation
 -else
   ul
     li.blue
@@ -57,3 +60,6 @@
       | ADK/EUR
       span 
       | 00
+	/! Sidebar toggle button
+	a.sidebar-toggle data-toggle="push-menu" href="#" role="button" 
+		span.sr-only Toggle navigation

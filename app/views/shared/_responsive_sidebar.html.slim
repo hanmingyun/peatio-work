@@ -1,0 +1,30 @@
+/! sidebar: style can be found in sidebar.less
+section.sidebar
+  /! Sidebar user panel
+  .logo
+    img#logo_image alt=("Logo Image") src="#{asset_path('Final.png')}" /
+  /! sidebar menu: : style can be found in sidebar.less
+  ul.sidebar-menu data-widget="tree" 
+	- if current_user
+		= render partial: 'shared/header_profile_setting'
+	- else
+		li.active
+		  a href="#" 
+			i.fa.fa-user
+			span My Account
+	
+	li
+	  a href="/markets/adkbtc" target="" 
+		i.fa.fa-exchange
+		span Trade
+	li
+	  a href="/exchange_assets" target="" 
+		i.fa.fa-bar-chart-o
+		span Solvency
+	- if current_user
+		= render partial: 'shared/funds_item'
+		li class = check_active('history')
+		  a href="/history/orders" target="" 
+			i.fa.fa-book
+			span History
+/! /.sidebar

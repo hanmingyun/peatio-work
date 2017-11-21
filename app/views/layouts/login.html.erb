@@ -12,22 +12,27 @@
     <%= render 'shared/meta'%>
     <%= csrf_meta_tags %>
   </head>
-  <body>
-    <%= render 'shared/sidebar'%>
-    <!-- main section starts -->
-    <section id="main">
-      <div >
-        <div>
-          <%= render 'shared/new_header'%>
-          <%= render 'shared/alert'%>
-          <%= render 'shared/flash'%>
-          <%= yield %>
-        </div>
-      </div>
-      <!-- footer section starts -->
-      <%= render 'shared/footer'%>
-      <!-- footer section ends -->
-    </section>
-    <!-- main section ends -->
+  <body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<header class="main-header">
+			<%= render 'shared/responsive_header'%>
+		</header>
+		
+		<aside class="main-sidebar">
+			<%= render 'shared/responsive_sidebar'%>
+		</aside>
+		
+		<div class="content-wrapper">
+			<section  class="content">
+				<%= render 'shared/alert'%>
+				<%= render 'shared/flash'%>
+				<%= yield %>
+			</section>
+		</div>
+		
+		<!-- footer section starts -->
+		<%= render 'shared/footer'%>
+		<!-- footer section ends -->
+	</div>
   </body>
 </html>

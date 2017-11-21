@@ -27,8 +27,10 @@
 @import 'features/documents';
 @import 'features/simple_captcha';
 @import 'features/custom';
+@import 'css/AdminLTE.min';
 @import 'css/custom';
 @import 'css/tab';
+
 
 
 /* layouts
@@ -37,7 +39,7 @@ html, body {
   height: 100%;
 }
 .left_penel{width: 100%;}
-.user_name{margin-left: -36px;}
+
 .main-body{margin-left: 17%; width: 82%;}
 #wrap {
   height: auto !important;
@@ -95,14 +97,11 @@ html, body {
   }
 }
 
-#push, footer {
-}
-
 footer {
-  position: fixed;
   bottom: 0;
   width: 85%;
 }
+
 
 /* ticker
 ------------------------------------------- */
