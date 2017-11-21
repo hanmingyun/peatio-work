@@ -4,12 +4,12 @@
   <div class="panel-body panel-currencies">
 
     <div class='row'>
-      <div class='col-xs-8'>
+      <!-- <div class='col-xs-8'>
 
         <div class="currencies-container">
           <accounts></accounts>
         </div>
-      </div>
+      </div> -->
 
       <div class='col-xs-16'>
         <div class="details-container">
@@ -33,3 +33,20 @@
     });
   </script>
 <% end %>
+<script type="text/javascript" charset="utf-8">
+    $(window).load(function(){
+      <%if params[:data] == 'deposits'%>
+        console.log('deposits')
+        $('#withdraws').parent().removeClass('active');
+        $('#deposits').parent().addClass('active');
+        // $('#deposits').click();
+        window.location = "/funds#/deposits/btc"
+      <%elsif params[:data] == 'withdraws' %>
+      console.log('withdraw')
+      $('#deposits').parent().removeClass('active');
+      $('#withdraws').parent().addClass('active');
+        // $('#withdraw').click();
+        window.location = "/funds#/withdraws/btc"
+      <% end %>
+    });
+  </script>
