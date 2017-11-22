@@ -32,4 +32,18 @@
       })
     });
   </script>
+  <script type="text/javascript" charset="utf-8">
+	$(window).load(function(){
+		<% if params[:data] == 'deposits' %>
+			console.log("deposits")
+			$('#adk').attr('href', "#/deposits/adk");
+			$('#btc').attr('href', "#/deposits/btc");
+		<% elsif params[:data] == "withdraws" %>
+			$('#adk').attr('href', "#/withdraws/adk");
+			$('#btc').attr('href', "#/withdraws/btc");
+		<% end %>
+		
+	});
+		
+  </script>
 <% end %>
