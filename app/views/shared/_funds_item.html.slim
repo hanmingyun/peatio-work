@@ -5,11 +5,11 @@ li.treeview
 	
   
   ul.treeview-menu
-	li class = "#{request.referrer.include? "deposits" ? 'active' : nil}"
+	li class = ""
 	  a href = "/funds?data=deposits" 
 		i.fa.fa-user
 		span = t('.deposit')
-	li class = "#{request.referrer.include? "withdraws" ? 'active' : nil}"
+	li class = ""
 	  a href = "/funds?data=withdraws" 
 		i.fa.fa-comments
 		span = t('.withdraw')
