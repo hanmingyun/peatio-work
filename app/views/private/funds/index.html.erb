@@ -28,7 +28,7 @@
     $(window).load(function(){
       $.ajax({
         type: "post",
-        url: "<%= gen_address_funds_path %>"
+        url: "<%= gen_address_funds_path(:data=> params[:data]) %>"
       })
     });
   </script>
@@ -51,16 +51,16 @@
     $(window).load(function(){
       <%if params[:data] == 'deposits'%>
         console.log('deposits')
-        $('#withdraws').parent().removeClass('active');
-        $('#deposits').parent().addClass('active');
+        $('#btc').parent().removeClass('active');
+        $('#adk').parent().addClass('active');
         // $('#deposits').click();
-        window.location = "/funds#/deposits/btc"
+        window.location = "/funds?data=deposits#/deposits/adk?"
       <%elsif params[:data] == 'withdraws' %>
       console.log('withdraw')
-      $('#deposits').parent().removeClass('active');
-      $('#withdraws').parent().addClass('active');
+      $('#btc').parent().removeClass('active');
+      $('#adk').parent().addClass('active');
         // $('#withdraw').click();
-        window.location = "/funds#/withdraws/btc"
+        window.location = "/funds?data=withdraws#/withdraws/adk"
       <% end %>
     });
   </script>
