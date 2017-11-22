@@ -32,9 +32,16 @@
 						<div class="tabs-menu">
 							<nav>
 								<ul>
-									<li class="active" ><a href="/funds#/deposits/btc" id="deposits" ><span>Deposits</span></a></li>
-									<li  ><a href="/funds#/withdraws/btc" id="withdraws" ><span>Withdraw</span></a></li>
+									<%if params[:data]=='deposits'%>
+									<li class="active" ><a href="/funds#/deposits/adk" id="deposits" ><span>ADK</span></a></li>
+									<li  ><a href="/funds#/deposits/btc" id="withdraws" ><span>BTC</span></a></li>
+									<%else%>
+									<li class="active"><a href="funds#/withdraws/adk" id="adk">
+										<span>ADK</span></a></li>
+									<li class=""><a href="funds#/withdraws/btc" id="btc"><span>BTC</span></a></li>
+									<%end%>
 								</ul>
+								
 							</nav>	
 							<div class="content">
 								<div class="wrapper">

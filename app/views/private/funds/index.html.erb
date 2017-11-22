@@ -28,9 +28,23 @@
     $(window).load(function(){
       $.ajax({
         type: "post",
-        url: "<%= gen_address_funds_path %>"
+        url: "<%= gen_address_funds_path(:data=> params[:data]) %>"
       })
     });
+  </script>
+  <script type="text/javascript" charset="utf-8">
+	$(window).load(function(){
+		<% if params[:data] == 'deposits' %>
+			console.log("deposits")
+			$('#adk').attr('href', "#/deposits/adk");
+			$('#btc').attr('href', "#/deposits/btc");
+		<% elsif params[:data] == "withdraws" %>
+			$('#adk').attr('href', "#/withdraws/adk");
+			$('#btc').attr('href', "#/withdraws/btc");
+		<% end %>
+		
+	});
+		
   </script>
 <% end %>
 <script type="text/javascript" charset="utf-8">
@@ -40,13 +54,13 @@
         $('#withdraws').parent().removeClass('active');
         $('#deposits').parent().addClass('active');
         // $('#deposits').click();
-        window.location = "/funds#/deposits/btc"
+        window.location = "/funds?data=deposits#/deposits/btc?"
       <%elsif params[:data] == 'withdraws' %>
       console.log('withdraw')
       $('#deposits').parent().removeClass('active');
       $('#withdraws').parent().addClass('active');
         // $('#withdraw').click();
-        window.location = "/funds#/withdraws/btc"
+        window.location = "/funds?data=withdraws#/withdraws/btc"
       <% end %>
     });
   </script>
