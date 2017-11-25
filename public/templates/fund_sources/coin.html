@@ -1,10 +1,10 @@
 <h3 ng-bind="'fund_sources.manage_coin_address' | t"></h3>
 <h5 ng-bind="'fund_sources.manage_coin_address_desc' | t"></h5>
-<table class="table table-condensed table-hover">
+<table class="table table-condensed table-hover" style="table-layout: fixed;">
   <thead>
     <tr>
       <th ng-bind="'fund_sources.label' | t"></th>
-      <th ng-bind="'fund_sources.address' | t"></th>
+      <th ng-bind="'fund_sources.address' | t" style="width:65%"></th>
       <th class="text-center" ng-bind="'fund_sources.default' | t"></th>
       <th></th>
     </tr>
@@ -12,7 +12,7 @@
   <tbody>
     <tr ng-repeat="fs in fund_sources()">
       <td class="col-xs-8" ng-bind="fs.extra"></td>
-      <td class="col-xs-12" ng-bind="fs.uid"></td>
+      <td class="col-xs-12" ng-bind="fs.uid" style="overflow: hidden; text-overflow: ellipsis;"></td>
       <td class="col-xs-2 text-center">
         <input type="radio" value="fs" ng-checked="fs == defaultFundSource()" ng-click="makeDefault(fs)">
       </td>

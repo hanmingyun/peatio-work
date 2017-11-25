@@ -182,10 +182,26 @@ header a {
     float: left;
     height: 100%;
 }
+
 .sidebar-menu li.active{
 	background: #062d4a;
     width: 100%;
 }
+
+.sidebar-menu li.treeview.active.menu-open > a{
+	background: #062d4a;;
+}
+
+.sidebar-menu li.treeview.active.menu-open ul li.active{
+	background: #38576e;
+}
+
+.sidebar-menu li.treeview.active.menu-open ul li:hover{
+	background: #062d4f;
+}
+
+
+
 .sidebar-menu li:hover{
 	background: #08375c;
 }

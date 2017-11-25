@@ -1,17 +1,20 @@
-li.treeview
+=@activated_item
+
+li class = (if @activated_item=="" then "treeview" else "treeview active" end)
   a href="#"
 	i.fa.fa-money
 	span = t('.funds')
 	
   
   ul.treeview-menu
-	li class = "#{request.referrer.include? "deposits" ? 'active' : nil}"
+	li class = "#{@activated_item=="deposits" ? "active" : nil}"
 	  a href = "/funds?data=deposits" 
 		i.fa.fa-user
 		span = t('.deposit')
-	li class = "#{request.referrer.include? "withdraws" ? 'active' : nil}"
+	li class = "#{@activated_item=="withdraws" ? "active" : nil}"
 	  a href = "/funds?data=withdraws" 
 		i.fa.fa-comments
 		span = t('.withdraw')
+			
 		
 	

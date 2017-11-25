@@ -15,6 +15,8 @@ module Private
       @withdraws = current_user.withdraws
       @fund_sources = current_user.fund_sources
       @banks = Bank.all
+	  
+	  @activated_item = params[:data]
 
       gon.jbuilder
     end
