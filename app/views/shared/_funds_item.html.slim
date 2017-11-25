@@ -1,6 +1,4 @@
-=@activated_item
-
-li class = (if @activated_item=="" then "treeview" else "treeview active" end)
+li class = (if (@activated_item.nil? || @activated_item == "") then "treeview" else "treeview active" end)
   a href="#"
 	i.fa.fa-money
 	span = t('.funds')
