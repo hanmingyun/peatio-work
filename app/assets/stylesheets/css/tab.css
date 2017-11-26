@@ -93,7 +93,7 @@ section.content .tabs-menu nav li {
 section.content .tabs-menu nav li:first-child{margin-left:0;}
 
 section.content .tabs-menu nav li a{ color: #c0c1c2;}
-section.content .tabs-menu .active a{ color: #FFF;}
+section.content .tabs-menu nav li.active a{ color: #fff;}
 
 section.content .tabs-menu nav li.active {
   background: #158dff;

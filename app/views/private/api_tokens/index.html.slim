@@ -1,6 +1,16 @@
-= content_for :frame do
-  .container
-    = render 'shared/flash'
-    = render 'user_tokens'
-    = render 'oauth_tokens'
+#tab_container
+  .tabs-menu
+    nav
+      ul
+        li#1.active
+          a href="#tokens-div" data-toggle="tab" 
+            span=guide_panel_title
+        li
+          a href="#auth-div" data-toggle="tab"
+            span=t('private.api_tokens.oauth_tokens.panel_title')
 
+    .tab-content
+      .tab-pane.active#tokens-div
+        = render 'user_tokens'
+      .tab-pane#auth-div
+        = render 'oauth_tokens'

@@ -1,7 +1,9 @@
-.panel.panel-default
-  .panel-heading
-    h2.panel-title = guide_panel_title
-  .panel-body
+.content
+  .wrapper
+    div
+      .row
+        .col-xs-4.col-xs-offset-18
+          = link_to t('.create'), new_api_token_path, class: 'btn btn-primary btn_new'
     .row
       #guide.col-xs-8
         h3 = guide_title
@@ -13,10 +15,6 @@
           = t('.more')
           = link_to 'https://github.com/peatio/peatio#api', 'https://github.com/peatio/peatio#api', target: '_blank'
       #content.col-xs-16
-        .buttons style='margin-bottom: 20px;'
-          = link_to t('.create'), new_api_token_path, class: 'pull-right btn btn-primary'
-          .clearfix
-
         table.table.table-condensed.table-striped
           thead: tr
             th class='token-label' = APIToken.human_attribute_name('label')
