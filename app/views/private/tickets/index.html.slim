@@ -12,8 +12,10 @@
     .content
       .wrapper
         div
-          span.pull-right
-            = link_to t('.new_ticket'), new_ticket_path, class: 'btn btn-primary btn-block btn_new'
+          .row
+            .col-xs-4.col-xs-offset-20
+              = link_to t('.new_ticket'), new_ticket_path, class: 'btn btn-primary btn_new'
+            br
             br
         div
           table#setting_list.table.mtable
